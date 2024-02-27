@@ -1,8 +1,13 @@
-import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
+const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null
 
 export async function fetchProperties() {
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/properties`)
+        // Handle the case where the domain is not available yet.
+        if (!apiDomain) {
+            return []
+        }
+
+        const res = await fetch(`${apiDomain}/properties`)
 
         if (!res.ok) {
             throw new Error('Failed to fetch data.')
@@ -11,5 +16,6 @@ export async function fetchProperties() {
         return res.json()
     } catch (error) {
         console.log(error)
+        return []
     }
 }
