@@ -6,6 +6,7 @@ import {fetchProperty} from "@/utils/request";
 import PropertyHeaderImage from "@/components/PropertyHeaderImage";
 import GoBack from "@/components/GoBack";
 import PropertyDetails from "@/components/PropertyDetails";
+import Spinner from "@/components/Spinner";
 
 export default function PropertyPage() {
     const { id } = useParams()
@@ -42,6 +43,7 @@ export default function PropertyPage() {
 
     return (
         <>
+            {loading && <Spinner loading={loading} /> }
             {!loading && property && (
                 <>
                     <PropertyHeaderImage image={ property.images[0] } />
