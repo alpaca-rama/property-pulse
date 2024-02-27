@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {} from 'react-icons'
+import {FaArrowLeft} from 'react-icons/fa'
 
 export default function GoBack() {
     return (
@@ -9,7 +9,7 @@ export default function GoBack() {
                     href="/properties"
                     className="text-blue-500 hover:text-blue-600 flex items-center"
                 >
-                    <i className="fas fa-arrow-left mr-2"></i> Back to Properties
+                    <FaArrowLeft className={'mr-2'} /> Back to Properties
                 </Link>
             </div>
         </section>
