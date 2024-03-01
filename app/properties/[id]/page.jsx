@@ -7,6 +7,7 @@ import PropertyHeaderImage from "@/components/PropertyHeaderImage";
 import GoBack from "@/components/GoBack";
 import PropertyDetails from "@/components/PropertyDetails";
 import Spinner from "@/components/Spinner";
+import PropertyImages from "@/components/PropertyImages";
 
 export default function PropertyPage() {
     const { id } = useParams()
@@ -140,6 +141,7 @@ export default function PropertyPage() {
                             </div>
                         </div>
                     </section>
+                    <PropertyImages images={property.images} />
                 </>
             )}
         </>
