@@ -18,7 +18,7 @@ export const authOptions = {
         })
     ],
     callbacks: {
-        // Invoked on successful signin
+        // Invoked on successful sign in
         async signIn({ profile }) {
             // 1. Connect to database
             await connectDB()
