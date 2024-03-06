@@ -1,3 +1,4 @@
+import {SpeedInsights} from "@vercel/speed-insights/next";
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import 'photoswipe/dist/photoswipe.css'
@@ -22,6 +23,7 @@ export default function MainLayout({ children }) {
                         <Navbar />
                         <main>
                             {children}
+                            <SpeedInsights />
                         </main>
                         <Footer />
                         <ToastContainer />
