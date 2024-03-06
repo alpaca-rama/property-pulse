@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {signIn, signOut, useSession, getProviders} from 'next-auth/react'
 import {usePathname} from "next/navigation"
 
@@ -11,6 +11,7 @@ import { FaGoogle } from 'react-icons/fa'
 import logo from '@/assets/images/logo-white.png'
 import profileDefault from '@/assets/images/profile.png'
 import UnreadMessageCount from "@/components/UnreadMessageCount";
+import useOutsideClickHandler from "@/hooks/useOutsideClick";
 
 export default function Navbar() {
     const { data: session } = useSession()
@@ -22,6 +23,8 @@ export default function Navbar() {
 
     const pathname = usePathname()
 
+    const ref = useRef(null)
+
     useEffect(function() {
         async function setAuthProviders() {
             const res = await getProviders()
@@ -30,6 +33,8 @@ export default function Navbar() {
 
         setAuthProviders()
     }, [])
+
+    useOutsideClickHandler(ref, () => setIsProfileMenuOpen(false))
 
     return (
         <nav className="bg-blue-700 border-b border-blue-500">
@@ -157,7 +162,7 @@ export default function Navbar() {
                             </Link>
 
                             {/* <!-- Profile dropdown button --> */}
-                            <div className="relative ml-3">
+                            <div className="relative ml-3" ref={ref}>
                                 <div>
                                     <button
                                         type="button"
